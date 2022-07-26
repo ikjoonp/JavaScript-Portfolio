@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikjoon Park's Portfolio</title>
+    <link rel = "icon" href = "favicon.ico?v=1">
+    <link rel = "stylesheet" href = "style.css" type = "text/css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href = "#info">About Me</a></li>
+                <li><a href = "#interests">Interests</a></li>
+                <li><a href = "#coursework">Coursework</a></li>
+                <li><a href = "#contact">Contact</a></li>
+                <li><a href = "experiments.html">Experiments</a></li>
+            </ul>
+        </nav>
+        <h1>Ikjoon Park's Portfolio</h1>
+    </header>
+
+    <main>
+            <div class = "background"> 
+                <h2>01. About Me </h2>
+                <section id = info>
+                <p>Hi, my name is Ikjoon Park. I am a third year Computer Science student at the 
+                    University of California San Diego. I've had an interest in Computer Science at an 
+                    early age due to my father's occupation as then the lead animator at Rockstar Studios, a 
+                    video game publisher. Growing up, I was naturally drawn to videogames and continued 
+                    this hobby throughout my highschool career. My interest in video games eventually amalgamated
+                    into a general interest in technology and computer programming, and I chose to pursue this
+                    academically through an university setting.</p>
+                <img src = "/media/profile.png" alt = "Picture of Ikjoon" height = "1%" width = "20%">
+                </section>
+            </div>
+            
+
+            <h2 class = "rightHeader">02. Interests</h2>
+            <section id = interests>
+                <div class = "map">
+                    <details>
+                    <summary>UCSD</summary>
+                    Address: 9500 Gilman Dr, La Jolla, CA 92093
+                    </details>
+                    <iframe
+                    title="UCSD" width="200em" height="300em"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-117.2406327724457%2C32.87793378236318%2C-117.23712980747224%2C32.883484007342375&amp;layer=mapnik">
+                    </iframe>   
+                </div>
+                <section class = "interestContent">
+                    <p>Apart from my passion in computer science/programming and videogames, I am also interested 
+                    in fashion and building keyboards. Although my interest in fashion is largely financially
+                    restrained, I have recently completed a <i>75%</i> keyboard that has become my daily driver. Check
+                    out the <code>git</code>-themed keycaps from GMK; many of the keys are replaced with common
+                    <code>git</code> commands like <code>tag, push, checkout,</code> and <code>fetch</code>!</p>
+                    <button onclick = "SomeFunction()"> Show keyboard</button> 
+                    <aside><em>The button shouldn't display the image because it lacks the necessary JavaScript.</em></aside><br>
+                    <p>I also love to travel! Although the pandemic had destroyed any prospects of international travel during
+                    the past two years, I hope things return to normal by the time I graduate. My favorite country I've visited
+                    is Japan!.</p>
+                    <canvas id="flag" width="200em" height="100em" style="border:1px solid black;">
+                    </canvas>
+                    <script>
+                        var c = document.getElementById("flag");
+                        var ctx = c.getContext("2d");
+                        ctx.fillStyle = "White";
+                        ctx.fillRect(0, 0, c.width, c.height);
+                        ctx.beginPath();
+                        ctx.arc(95, 50, 30, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        ctx.fillStyle = "Red";
+                        ctx.fill();
+                    </script>
+                </section>
+
+                <template>
+                    <h4>My Recent Keyboard Build!</h4>
+                    <img src = "/media/keyboard.jpg" alt = "Custom keyboard" width = "600">
+                </template>
+                <script>
+                    /* 
+                    script that displays the picture of the keyboard when the 
+                    button is pressed, calling SomeFunction().
+                    */
+                </script>
+            </section>
+            <div class = "background">
+            <h2> 03. Coursework</h2>
+            <section class = "coursecontact">
+                <section class = "coursework">
+                    <h3> UCSD</h3>
+                        <ul class = "striped">
+                            <li>Basic Data Structures and Object Oriented Design</li>
+                            <li>Algorithms and Systems Analysis</li>
+                            <li>Computer Organization and Systems Programming</li>
+                            <li>Advanced Data Structures</li>
+                            <li>Design and Analysis of Algorithms</li>
+                            <li>Software Engineering</li>
+                            <li>Deep Learning for Natural Language Understanding</li>
+                            <li>Introduction to Computer Architecture</li>
+                            <li>AI: Search and Reasoning</li>
+                            <li>Data Science in Practice</li>
+                            <li>Programming Languages: Principles and Paradigms</li>
+                        </ul>
+                </section>
+                <section class = "languages">
+                    <table>
+                        <caption><b>Programming Languages</b></caption>
+                        <colgroup>
+                            <col span = "1">
+                            <col span = "1"> 
+                        </colgroup>
+                        <tr>
+                            <th><u>Language</u></th>
+                            <th><u>Familiarity</u></th>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>Intermediate</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>Beginner</td>
+                        </tr>
+                        <tr>
+                            <td>C++</td>
+                            <td>Beginner</td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            </div>
+    </main>
+    <footer>
+        <div class = "contact">
+            <form class = "contactForm">
+                <fieldset>
+                        <legend> Send a Message!</legend>
+                        <ol>
+                            <li><label for = "name">Contact Name:</label>
+                                <select id = "prefix">
+                                    <optgroup label = "Common">
+                                        <option value = "" disabled selected>--Prefix--</option>
+                                        <option value = "Mr">Mr.</option>
+                                        <option value = "Mrs">Mrs.</option>
+                                        <option value = "Ms">Ms.</option>
+                                        <option value = "Miss">Miss</option>
+                                    </optgroup>
+                                    <optgroup label = "Formal">
+                                        <option value = "Sir">Sir</option>
+                                        <option value = "Sire">Sire</option>
+                                        <option value = "Madam">Madam</option>
+                                        <option value = "Maam">Ma'am</option>
+                                        <option value = "Lord">Lord</option>
+                                        <option value = "Lady">Lady</option>
+                                    </optgroup>
+                                    <optgroup label = "Academic">
+                                        <option value = "Dr">Dr.</option>
+                                        <option value = "Prof">Professor</option>
+                                        <option value = "Chanc">Chancellor</option>
+                                    </optgroup>
+                                </select>
+                                <input id = "name" type = "text" placeholder = "name"><br>
+                            </li>
+                            <li><label for = "email">Contact Email:</label> 
+                                <input id = "email" type = "text" placeholder ="email"><br>
+                            </li>
+                            <li><label for = "subject-choice">Subject:</label>
+                                <input list = "subject-list" id = "subject-choice" placeholder = "subject">
+                                <datalist id = "subject-list">
+                                    <option value = "Question"></option>
+                                    <option value = "Job Opportunity"></option>
+                                    <option value = "Critique"></option>
+                                    <option value = "Comment"></option>
+                                </datalist><br>
+                                </li>
+                        </ol>
+                            <label for = "message">Message</label><br>
+                            <textarea id = "message" placeholder = "message"></textarea><br><br>
+                            <button type="submit"><strong>Submit</strong></button>
+                    </fieldset>
+                </form>   
+            </div>
+            <br><br>
+        <div class = "music">
+            <figure class = "music">
+                <figcaption> Listen to some music while you're here!</figcaption>
+                    <audio controls loop preload = none>
+                    <source src = "/media/subtle.mp3">
+                    Audio element not supported!</audio> 
+            </figure>
+        </div>
+    </footer>
+</body>
+</html>
