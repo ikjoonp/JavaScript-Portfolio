@@ -23,19 +23,20 @@ export function loadPosts() {
 /*
     CRUD
 */
-// Adds the post object to the array and adds it to local storage.
+// Pushes the post object to the array and adds it to local storage.
 export function createPost(post) {
     let posts = loadPosts();
     posts.push(post);
     storePosts(posts);
 }
-// Replaces the post object with the new one.
-export function updatePost(post) {
-    let posts = loadPosts();
-    posts[postID] = post;
-    storePosts(posts);
-}
-// Deletes a post object.
+// Didn't use this function but will probably add in future for clarity
+// export function updatePost(post) {
+//     let posts = loadPosts();
+//     posts[postID] = post;
+//     storePosts(posts);
+// }
+
+// Deletes a post object by removing the object with its title and redisplaying.
 export function deletePost(title) {
     let postContainer = document.getElementById('posts');
     let posts = loadPosts();
@@ -48,11 +49,13 @@ export function deletePost(title) {
     reload();
 }
 
+// Returns the number of posts in case we must re-populate with sample posts.
 export function countPosts() {
     let posts = loadPosts();
     return posts.length;
 }
 
+// Renders a single post, largely from discussion.
 export function renderPost(post) {
     let template = document.getElementById("blogpost-template");
     let postEl = template.content.cloneNode(true);
@@ -63,12 +66,14 @@ export function renderPost(post) {
     let postSummary = postEl.querySelector('post-summary > p');
     postSummary.textContent = post.summary;
     let postEditBtn = postEl.querySelector('.editPostBtn');
+    // bury information within custom tags for use in delete/edit
     postEditBtn.setAttribute('data-title', post.title);
     postEditBtn.setAttribute('data-date', post.date);
     postEditBtn.setAttribute('data-summary', post.summary);
     return postEl;
 }
 
+// Displays all posts via renderPost. Largely from discussion.
 export function redisplayAllPosts(container) {
     let posts = loadPosts();
     let postContainer = document.getElementById('posts');
@@ -86,12 +91,18 @@ document.addEventListener('DOMContentLoaded', function(e){
     let editPostForm = document.getElementById('editPostForm');
     let addPostForm = document.getElementById('insert-post-form');
     let addPostBtn = document.getElementById('addPostBtn');
+    let cancelAddBtn = document.getElementById('cancelAdd');
     redisplayAllPosts(postContainer);
 
+    /*
+        Events for ADD operations
+    */
+    // Hide edit and show add forms when add button is clicked.
     addPostBtn.addEventListener('click', function(e){
         addPostForm.style.display = 'block';
         editPostForm.style.display = 'hide';
     });
+    // Create and display a post object.
     addPostForm.addEventListener('submit', function(e){
         e.preventDefault();
         let postTitle = document.getElementById('postTitle').value;
@@ -107,7 +118,15 @@ document.addEventListener('DOMContentLoaded', function(e){
         reload();
         hide();
     });
+    // Hides both edit and add forms when add operation is cancelled.
+    cancelAddBtn.addEventListener('click',function(e) {
+        hide();
+    });
 
+    /*
+        Events for EDIT operations
+    */
+    // Repopulates the edit form with the chosen post contents.
     var chosenEditTitle;
     let editBtns = document.querySelectorAll('.editPostBtn');
     for (let i = 0; i < editBtns.length; i++) {
@@ -121,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function(e){
             document.getElementById('postEditSummary').value = editBtns[i].getAttribute('data-summary');
         });
     }
+    // Deletes the chosen post and re-adds it with edits.
     editPostForm.addEventListener('submit', function(e){
         e.preventDefault();
         let postTitle = document.getElementById('postEditTitle').value;
@@ -138,11 +158,14 @@ document.addEventListener('DOMContentLoaded', function(e){
         hide();
     });
 
+    /*
+        Event for DELETE operation
+    */
+   // Deletes post via alert on chosen post.
     let deleteBtns = document.querySelectorAll('.deletePostBtn');
     for (let i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].addEventListener('click', function(e) {
-            editPostForm.style.display = 'none';
-            addPostForm.style.display = 'none';
+            hide();
             if (confirm('Would you like to delete this post?')){
                 deletePost(editBtns[i].getAttribute('data-title'))
             }
@@ -150,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function(e){
     }
 });
 
+// Reassigns the eventListeners after an edit/delete/operation
 function reload() {
     let editPostForm = document.getElementById('editPostForm');
     let addPostForm = document.getElementById('insert-post-form');
@@ -163,7 +187,6 @@ function reload() {
             document.getElementById('postEditSummary').value = editBtns[i].getAttribute('data-summary');
         });
     }
-    
     let deleteBtns = document.querySelectorAll('.deletePostBtn');
     for (let i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].addEventListener('click', function(e) {
@@ -176,6 +199,7 @@ function reload() {
     }
 }
 
+// Hides both the edit and add forms.
 function hide() {
     let editPostForm = document.getElementById('editPostForm');
     let addPostForm = document.getElementById('insert-post-form');

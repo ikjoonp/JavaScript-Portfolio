@@ -27,8 +27,13 @@
             <post-summary>
                 <p>Example post summary</p>
             </post-summary>
-            <button class = "editPostBtn" data-title = "" data-date = "" data-summary = "">Edit</button>
-            <button class = "deletePostBtn">Delete</button>
+            <post-buttons>
+                 <button class = "editPostBtn" data-title = "" data-date = "" data-summary = "">
+                    <img src = "./media/pencil.png"></button>
+                <button class = "deletePostBtn">
+                    <img src = "./media/trash.png"></button>
+            </post-buttons>
+           
         </post-article>
     </template>
 </head>
@@ -57,7 +62,7 @@
                     <label for = "postSummary">Summary: </label>
                     <textarea id = "postSummary" placeholder = "summary" required></textarea>
                     <button type = "submit">Post</button>
-                    <button>Cancel</button>
+                    <input type = "button" value = "Cancel" id = "cancelAdd" formnovalidate>
                 </fieldset>
             </form>
         </section>
@@ -79,8 +84,8 @@
         </section>
 
     </main>
-    <footer>
-        <button id = addPostBtn>Add a Post!</button>
+    <footer id = "crudFooter">
+        <button id = addPostBtn><img src = './media/book.png'> Add a Post! <img src = './media/book.png'></button>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.10/purify.min.js" integrity="sha512-Qr/d6af6cN41/GIKiSmrQd4Y19/fo0YvWhD1VND8O+BsfbFBaZI4K7VVPoUZrd8PzMQ3CE71CkMjhrKf1NbhdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>

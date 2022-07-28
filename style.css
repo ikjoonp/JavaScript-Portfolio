@@ -210,3 +210,39 @@ figcaption {
     margin: 1em;
     text-align: center;
 }
+
+#posts{
+    display:flex;
+    flex-flow: column wrap;
+}
+
+post-title{
+    text-align: center;
+    margin: .5em 0em;
+}
+
+post-summary > p {
+    border-radius: 25px;
+    background-color: lightgoldenrodyellow;
+    padding: 1em;
+    margin: 0em 2em;
+    border-color: white;
+}
+
+post-buttons {
+    display:flex;
+    justify-content: center;
+}
+
+.editPostBtn {
+    background-color: lightgreen;
+}
+
+.deletePostBtn {
+    background-color: pink;
+}
+
+#crudFooter {
+    display: flex;
+    justify-content: center;
+}
