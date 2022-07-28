@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikjoon Park's Experiments</title>
+    <link rel = "icon" href = "favicon.ico?v=1">
+    <link rel = "stylesheet" href = "style.css" type = "text/css">
+    <script type="module">
+        import * as cDialog from './customdialog.js';
+        cDialog.cAlert();
+        cDialog.cConfirm();
+        cDialog.cPrompt();
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href = "index.html">Back to Portfolio</a>
+        </nav>
+        <h1>Custom Dialogs</h1>
+    </header>
+
+    <main>
+        <dialog id = "AlertDlg">
+            <div class = "cForm">
+                <form method = "dialog">
+                    <p>Alert pressed!</p>
+                    <button>OK</button>
+                </form>
+            </div>
+        </dialog>
+
+        <dialog id = "ConfirmDlg">
+            <div class = "cForm">
+                <form method = "dialog">
+                    <p>Do you confirm this?</p>
+                    <button value = "false">Cancel</button>
+                    <button value = "true">OK</button>
+                </form>
+            </div>
+        </dialog>
+
+        <dialog id = "PromptDlg">
+            <div class = "cForm">
+                <form method = "dialog">
+                    <p>What is your name?</p>
+                    <p><input type = "text" id = "promptName"></p>
+                    <button value = "false">Cancel</button>
+                    <button value = "true">OK</button>
+                </form>
+            </div>
+        </dialog>
+
+        <input type = "button" value = "Alert" id = "AlertBtn">
+        <br>
+        <input type = "button" value = "Confirm" id = "ConfirmBtn">
+        <output id = confirmOut></output>
+        <br>
+        <input type = "button" value = "Prompt" id = "PromptBtn">
+        <output id = promptOut></output>
+    </main>
+    <footer>
+    </footer>
+    <script type="text/javascript" src="node_modules\dompurify\dist\purify.min.js"></script>
+</body>
+</html>

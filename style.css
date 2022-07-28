@@ -205,3 +205,8 @@ figcaption {
     align-items: center;
     flex-direction: column;
 }
+
+.cForm{   
+    margin: 1em;
+    text-align: center;
+}

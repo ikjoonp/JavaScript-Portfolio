@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikjoon Park's Experiments</title>
+    <link rel = "icon" href = "favicon.ico?v=1">
+    <link rel = "stylesheet" href = "style.css" type = "text/css">
+    <script type="module">
+        import * as blog from './blog.js';
+        import examplePosts from './examples.js';
+
+        if (blog.countPosts() == 0) {
+            for (let post of examplePosts) {
+                blog.createPost(post);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", (_ev) => {
+            let postContainer = document.getElementById("posts");
+            blog.redisplayAllPosts(postContainer);
+        });
+
+    </script>
+
+    <template id = "blogpost-template">
+        <post-article>
+            <post-title>
+                <h2>Title</h2>
+                <p>Date</p>
+            </post-title>
+            <post-summary>
+                <p>Example post summary</p>
+            </post-summary>
+        </post-article>
+    </template>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href = "index.html">Back to Portfolio</a>
+        </nav>
+        <h1>Blog</h1>
+    </header>
+    <main>
+
+        <section id = "posts">
+            <!--Posts will go here-->
+        </section>
+
+        <section>
+            <form id = "insert-book-form">
+                <fieldset>
+                    <legend>Add a new post!</legend>
+                    <label for = "postTitle"> Post Title: </label>
+                    <input id = "postTitle" type = "text" placeholder = "title" required>
+                    <label for = "postDate">Post Date: </label>
+                    <input id = "postDate" type = "date" required>
+                    <label for = "postSummary">Summary: </label>
+                    <textarea id = "postSummary" placeholder = "summary" required></textarea>
+                    <button type = "submit">Post</button>
+                    <button>Cancel</button>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+    <footer>
+    </footer>
+    <script type="text/javascript" src="node_modules\dompurify\dist\purify.min.js"></script>
+</body>
+</html>
